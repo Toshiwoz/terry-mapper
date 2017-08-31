@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!-- <script type="text/javascript" src="lib/js/jquery-1.12.4.js"></script> -->
+    <!-- <script type="text/javascript" src="lib/js/osmtogeojson.js"></script> -->
+    <script src='lib/js/mapbox-gl.js'></script>
+    <link href='lib/css/mapbox-gl.css' rel='stylesheet' />
+    <link href='lib/css/bootstrap.min.css' rel='stylesheet' />
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #map {
+        width: 100%;
+        height: 70vh
+    }
+    </style>
+</head>
+
+<body>
+    <div id='map'></div>
+    <div id="example">
+        We are using node
+        <script>
+        document.write(process.versions.node)
+        </script>, Chrome
+        <script>
+        document.write(process.versions.chrome)
+        </script>, and Electron
+        <script>
+        document.write(process.versions.electron)
+        </script>.
+        <div id="left">
+            <h3>OSM data</h3>
+            <textarea id="osmxml" contenteditable="true"></textarea>
+        </div>
+        <div id="right">
+            <h3>GeoJSON</h3>
+            <textarea id="geojson" contenteditable="true"></textarea>
+        </div>
+        <a class="button" href="" id="toGeo">convert to GeoJSON &rarr;</a>
+    </div>
+    <script src='appjs/mapper.js'></script>
+</body>
+
+</html>
