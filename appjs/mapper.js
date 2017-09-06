@@ -39,7 +39,31 @@ var map = new mapboxgl.Map({
 //     type: 'geojson',
 //     data: geojson
 // });
-map.addSource('santa', {
-    type: 'geojson',
-    data: map_overlay
+
+map.on('load', function () {
+  console.log('loaded');
+  map.addSource('santa', {
+      type: 'geojson',
+      data: map_overlay
+  });
+   map.addLayer({
+      "id": "points",
+      "type": "fill",
+      "source": "santa",
+       "paint": {
+            "fill-color": "#888888",
+            "fill-opacity": 0.4
+        },
+        "filter": ["==", "$type", "Polygon"]
+  });
+   map.addLayer({
+      "id": "lines",
+      "type": "circle",
+      "source": "santa",
+       "paint": {
+            "circle-radius": 6,
+            "circle-color": "#B42222"
+        },
+        "filter": ["==", "$type", "Point"],
+  });
 });
