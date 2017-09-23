@@ -33,7 +33,11 @@ var map = new mapboxgl.Map({
     container: 'map', // container id
     style: stl, //'mapbox://styles/mapbox/streets-v9', // stylesheet location
     center: [-78.3816748, -0.3498079], // starting position [lng, lat]
-    zoom: 12 // starting zoom
+    zoom: 12, // starting zoom
+    pitch: 45,
+    bearing: -17.6,
+    hash: true,
+    container: 'map'
 });
 // map.addSource('data', {
 //     type: 'geojson',
@@ -66,4 +70,30 @@ map.on('load', function () {
         },
         "filter": ["==", "$type", "Point"],
   });
+   // Insert the layer beneath any symbol layer.
+    var layers = map.getStyle().layers.reverse();
+    var labelLayerIdx = layers.findIndex(function (layer) {
+        return layer.type !== 'symbol';
+    });
+    var labelLayerId = labelLayerIdx !== -1 ? layers[labelLayerIdx].id : undefined;
+    map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+            'fill-extrusion-color': '#aaa',
+            'fill-extrusion-height': {
+                'type': 'identity',
+                'property': 'height'
+            },
+            'fill-extrusion-base': {
+                'type': 'identity',
+                'property': 'min_height'
+            },
+            'fill-extrusion-opacity': .6
+        }
+    }, labelLayerId);
 });
