@@ -1,4 +1,4 @@
 *.lnk
 maps/
 styles/*
-!styles/json-custom
+!styles/json-custom/
