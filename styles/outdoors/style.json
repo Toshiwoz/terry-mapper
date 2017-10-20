@@ -90,8 +90,8 @@
     },
     "sources": {
         "composite": {
-            "url": "mapbox://mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v7",
-            "type": "vector"
+            "type": "vector",
+            "tiles": ["https://vector.mapzen.com/osm/all/{z}/{x}/{y}.mvt?api_key=mapzen-6AFQKAi"]
         }
     },
     "sprite": "mapbox://sprites/digitalki/cj5xxuc6f0pkz2rn08exag0rk",

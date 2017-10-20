@@ -1,5 +1,4 @@
 *.lnk
 maps/
-styles/basic-v9/
-styles/mapzen-tiles-simple/
-styles/outdoors/
+styles/*
+!styles/json-custom
