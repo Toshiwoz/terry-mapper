@@ -1,30 +1,109 @@
 {
     "version": 8,
     "name": "Basic",
-    "metadata": {
+    "metadata":
+    {
         "mapbox:autocomposite": true,
         "mapbox:type": "template"
     },
-    "sources": {
-        "mapbox": {
+    "sources":
+    {
+        "mapbox":
+        {
             "url": "mapbox://mapbox.mapbox-streets-v7",
             "type": "vector"
         }
     },
     "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
     "layers": [
+    {
+        "id": "background",
+        "type": "background",
+        "paint":
         {
-            "id": "background",
-            "type": "background",
-            "paint": {
-                "background-color": "#ECE3D0",
-                "background-opacity": 0.70
-            }
+            "background-color": "#ECE3D0",
+            "background-opacity": 0.70
+        }
+    },
+    {
+        "id": "road_major",
+        "type": "line",
+        "source": "jsonsource",
+        "interactive": true,
+        "layout":
+        {
+            "line-cap": "round",
+            "line-join": "round"
         },
+        "filter": [
+            "all", [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            [
+                "all", [
+                    "in",
+                    "highway",
+                    "motorway",
+                    "primary",
+                    "secondary",
+                    "tertiary",
+                    "trunk"
+                ]
+            ]
+        ],
+        "paint":
         {
-            "id": "roads",
+            "line-color": "#6c6969",
+            "line-width":
+            {
+                "base": 1.4,
+                "stops": [
+                    [
+                        6,
+                        0.5
+                    ],
+                    [
+                        20,
+                        30
+                    ]
+                ]
+            }
+        }
+    },
+    {
+        "id": "roads-unpaved",
+        "type": "line",
+        "source": "jsonsource",
+        "filter": [
+            "all", [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            [
+                "==",
+                "surface",
+                "unpaved"
+            ]
+        ],
+        "layout":
+        {
+            "visibility": "visible",
+            "line-join": "round"
+        },
+        "paint":
+        {
+            "line-color": "#A96207",
+            "line-width": 2
+        }
+    },
+        {
+            "id": "road_minor",
             "type": "line",
             "source": "jsonsource",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -33,145 +112,480 @@
                     "LineString"
                 ],
                 [
-                    "has",
-                    "highway"
+                    "in",
+                    "highway",
+                    "motorway_link",
+                    "street",
+                    "street_limited",
+                    "service",
+                    "track",
+                    "pedestrian",
+                    "path",
+                    "link"
                 ]
             ],
             "layout": {
-                "visibility": "visible",
+                "line-cap": "round",
                 "line-join": "round"
             },
             "paint": {
-                "line-width": 2
-            }
-        },
-        {
-            "id": "roads-unpaved",
-            "type": "line",
-            "source": "jsonsource",
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "$type",
-                    "LineString"
-                ],
-                [
-                    "==",
-                    "surface",
-                    "unpaved"
-                ]
-            ],
-            "layout": {
-                "visibility": "visible",
-                "line-join": "round"
-            },
-            "paint": {
-                "line-color": "#A96207",
-                "line-width": 2
-            }
-        },
-        {
-            "id": "buildings",
-            "source": "jsonsource",
-            "filter": ["has", "building"],
-            "type": "fill",
-            "minzoom": 10,
-            "paint": {
-                "fill-color": "#aaa"
-            }
-        },
-        {
-            "id": "3d-buildings",
-            "source": "jsonsource",
-            "filter": ["has", "building"],
-            "type": "fill-extrusion",
-            "minzoom": 15,
-            "paint": {
-                "fill-extrusion-color": "#aaa",
-                "fill-extrusion-height": {
-                    "type": "identity",
-                    "property": "building:levels"
-                },
-                "fill-extrusion-base": {
-                    "type": "identity",
-                    "property": "min_height"
-                },
-                "fill-extrusion-opacity": 0.6
-            }
-        },
-        {
-            "id": "landuse-residential",
-            "source": "jsonsource",
-            "filter": ["==", "landuse", "residential"],
-            "type": "fill",
-            "paint": {
-                "fill-color": "#C0C0C0",
-                "fill-opacity": 0.75
-            }
-        },
-        {
-            "id": "landuse-green",
-            "source": "jsonsource",
-            "filter": ["in", "landuse", "forest", "grass"],
-            "type": "fill",
-            "paint": {
-                "fill-color": "#388604",
-                "fill-opacity": 0.75
-            }
-        },
-        {
-            "id": "landuse-cementery",
-            "source": "jsonsource",
-            "filter": ["==", "landuse", "cemetery"],
-            "type": "fill",
-            "paint": {
-                "fill-color": "#2FB007",
-                "fill-opacity": 0.75
-            }
-        },
-        {
-            "id": "labels",
-            "type": "symbol",
-            "source": "jsonsource",
-            "filter": ["in",
-                    "$type",
-                    "LineString",
-                    "Point",
-                    "Polygon"],
-            "layout": {
-                "symbol-placement": "line",
-                "text-field": "{name}",
-                "text-font": [
-                    "Open Sans Semibold",
-                    "Arial Unicode MS Bold"
-                ],
-                "text-transform": "uppercase",
-                "text-letter-spacing": 0.1,
-                "text-offset": [
-                    0,
-                    0.5
-                ],
-                "text-size": {
-                    "base": 1.4,
+                "line-color": "#efefef",
+                "line-width": {
+                    "base": 1.55,
                     "stops": [
                         [
-                            10,
-                            8
+                            4,
+                            0.25
                         ],
                         [
                             20,
-                            14
+                            30
                         ]
                     ]
                 }
+            }
+        },
+    {
+        "id": "bridge_minor case",
+        "type": "line",
+        "source": "jsonsource",
+        "interactive": true,
+        "filter": [
+            "all", [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            [
+                "all", [
+                    "in",
+                    "highway",
+                    "motorway_link",
+                    "street",
+                    "street_limited",
+                    "service",
+                    "track",
+                    "pedestrian",
+                    "path",
+                    "link"
+                ],
+                [
+                    "==",
+                    "structure",
+                    "bridge"
+                ]
+            ]
+        ],
+        "layout":
+        {
+            "line-cap": "butt",
+            "line-join": "miter"
+        },
+        "paint":
+        {
+            "line-color": "#dedede",
+            "line-width":
+            {
+                "base": 1.6,
+                "stops": [
+                    [
+                        12,
+                        0.5
+                    ],
+                    [
+                        20,
+                        10
+                    ]
+                ]
             },
-            "paint": {
-                "text-color": "#666",
-                "text-halo-color": "rgba(255,255,255,0.75)",
-                "text-halo-width": 1,
-                "text-halo-blur": 1
+            "line-gap-width":
+            {
+                "base": 1.55,
+                "stops": [
+                    [
+                        4,
+                        0.25
+                    ],
+                    [
+                        20,
+                        30
+                    ]
+                ]
             }
         }
-    ]
+    },
+    {
+        "id": "bridge_major case",
+        "type": "line",
+        "source": "jsonsource",
+        "interactive": true,
+        "layout":
+        {
+            "line-cap": "butt",
+            "line-join": "miter"
+        },
+        "filter": [
+            "all", [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            [
+                "all", [
+                    "in",
+                    "highway",
+                    "motorway",
+                    "primary",
+                    "secondary",
+                    "tertiary",
+                    "trunk"
+                ],
+                [
+                    "==",
+                    "structure",
+                    "bridge"
+                ]
+            ]
+        ],
+        "paint":
+        {
+            "line-color": "#dedede",
+            "line-width":
+            {
+                "base": 1.6,
+                "stops": [
+                    [
+                        12,
+                        0.5
+                    ],
+                    [
+                        20,
+                        10
+                    ]
+                ]
+            },
+            "line-gap-width":
+            {
+                "base": 1.55,
+                "stops": [
+                    [
+                        4,
+                        0.25
+                    ],
+                    [
+                        20,
+                        30
+                    ]
+                ]
+            }
+        }
+    },
+    {
+        "id": "bridge_minor",
+        "type": "line",
+        "source": "jsonsource",
+        "interactive": true,
+        "filter": [
+            "all", [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            [
+                "all", [
+                    "in",
+                    "highway",
+                    "motorway_link",
+                    "street",
+                    "street_limited",
+                    "service",
+                    "track",
+                    "pedestrian",
+                    "path",
+                    "link"
+                ],
+                [
+                    "==",
+                    "structure",
+                    "bridge"
+                ]
+            ]
+        ],
+        "layout":
+        {
+            "line-cap": "round",
+            "line-join": "round"
+        },
+        "paint":
+        {
+            "line-color": "#efefef",
+            "line-width":
+            {
+                "base": 1.55,
+                "stops": [
+                    [
+                        4,
+                        0.25
+                    ],
+                    [
+                        20,
+                        30
+                    ]
+                ]
+            }
+        }
+    },
+    {
+        "id": "bridge_major",
+        "type": "line",
+        "source": "jsonsource",
+        "interactive": true,
+        "filter": [
+            "all", [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            [
+                "all", [
+                    "in",
+                    "highway",
+                    "motorway",
+                    "primary",
+                    "secondary",
+                    "tertiary",
+                    "trunk"
+                ],
+                [
+                    "==",
+                    "structure",
+                    "bridge"
+                ]
+            ]
+        ],
+        "layout":
+        {
+            "line-cap": "round",
+            "line-join": "round"
+        },
+        "paint":
+        {
+            "line-color": "#fff",
+            "line-width":
+            {
+                "base": 1.4,
+                "stops": [
+                    [
+                        6,
+                        0.5
+                    ],
+                    [
+                        20,
+                        30
+                    ]
+                ]
+            }
+        }
+    },
+    {
+        "id": "3d-buildings",
+        "source": "jsonsource",
+        "filter": ["has", "building"],
+        "type": "fill-extrusion",
+        "minzoom": 15,
+        "paint":
+        {
+            "fill-extrusion-color": "#aaa",
+            "fill-extrusion-height":
+            {
+                "type": "identity",
+                "property": "{building:levels}"
+            },
+            "fill-extrusion-base": 3,
+            "fill-extrusion-opacity": 0.6
+        }
+    },
+    {
+        "id": "landuse-residential",
+        "type": "fill",
+        "source": "jsonsource",
+        "filter": ["==", "landuse", "residential"],
+        "paint":
+        {
+            "fill-color": "#C0C0C0",
+            "fill-opacity": 0.75
+        }
+    },
+    {
+        "id": "landuse-green",
+        "source": "jsonsource",
+        "filter": ["in", "landuse", "forest", "grass"],
+        "type": "fill",
+        "paint":
+        {
+            "fill-color": "#388604",
+            "fill-opacity": 0.75
+        }
+    },
+    {
+        "id": "landuse-cementery",
+        "source": "jsonsource",
+        "filter": ["==", "landuse", "cemetery"],
+        "type": "fill",
+        "paint":
+        {
+            "fill-color": "#2FB007",
+            "fill-opacity": 0.75
+        }
+    },
+    {
+        "id": "labels",
+        "type": "symbol",
+        "source": "jsonsource",
+        "filter": ["in",
+            "$type",
+            "LineString",
+            "Point",
+            "Polygon"
+        ],
+        "layout":
+        {
+            "symbol-placement": "line",
+            "text-field": "{name}",
+            "text-font": [
+                "Open Sans Semibold",
+                "Arial Unicode MS Bold"
+            ],
+            "text-letter-spacing": 0.1,
+            "text-offset": [
+                0,
+                0.5
+            ],
+            "text-size":
+            {
+                "base": 1.4,
+                "stops": [
+                    [
+                        10,
+                        8
+                    ],
+                    [
+                        20,
+                        14
+                    ]
+                ]
+            }
+        },
+        "paint":
+        {
+            "text-color": "#666",
+            "text-halo-color": "rgba(255,255,255,0.75)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1
+        }
+    },
+    {
+        "id": "road_major_label",
+        "type": "symbol",
+        "source": "jsonsource",
+        "filter": [
+            "all", [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            [
+                "in",
+                "highway",
+                "motorway",
+                "primary",
+                "secondary",
+                "tertiary",
+                "trunk"
+            ]
+        ],
+        "layout":
+        {
+            "symbol-placement": "line",
+            "text-field": "{name}",
+            "text-font": [
+                "Open Sans Semibold",
+                "Arial Unicode MS Bold"
+            ],
+            "text-transform": "uppercase",
+            "text-letter-spacing": 0.1,
+            "text-size":
+            {
+                "base": 1.4,
+                "stops": [
+                    [
+                        10,
+                        8
+                    ],
+                    [
+                        20,
+                        14
+                    ]
+                ]
+            }
+        },
+        "paint":
+        {
+            "text-color": "#666",
+            "text-halo-color": "rgba(255,255,255,0.75)",
+            "text-halo-width": 2
+        }
+    },
+    {
+        "id": "place_label_other",
+        "type": "symbol",
+        "source": "jsonsource",
+        "filter": [
+            "all", [
+                "==",
+                "$type",
+                "Point"
+            ],
+            [
+                "in",
+                "place",
+                "town",
+                "village",
+                "hamlet",
+                "suburb",
+                "neighbourhood",
+                "island"
+            ]
+        ],
+        "layout":
+        {
+            "symbol-placement": "point",
+            "text-field": "{name}",
+            "text-font": [
+                "Open Sans Semibold",
+                "Arial Unicode MS Bold"
+            ],
+            "text-max-width": 6,
+            "text-size":
+            {
+                "stops": [
+                    [
+                        6,
+                        12
+                    ],
+                    [
+                        12,
+                        16
+                    ]
+                ]
+            }
+        },
+        "paint":
+        {
+            "text-color": "#666",
+            "text-halo-color": "rgba(255,255,255,0.75)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1
+        }
+    }]
 }
