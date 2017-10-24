@@ -1,4 +1,5 @@
 *.lnk
+node_modules/*
 maps/
 styles/*
 !styles/json-custom/

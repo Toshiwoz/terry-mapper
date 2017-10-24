@@ -1,5 +1,10 @@
 {
-  "name"    : "terry-mapper",
-  "version" : "0.1.0",
-  "main"    : "main.js"
+  "name": "terry-mapper",
+  "version": "0.1.0",
+  "main": "main.js",
+  "dependencies": {
+    "@mapbox/mapbox-gl-draw": "^1.0.2",
+    "@turf/turf": "^4.7.3",
+    "electron-canvas-to-buffer": "^2.0.0"
+  }
 }
