@@ -1,5 +1,6 @@
 *.lnk
 node_modules/*
 maps/
+maps_overlay/
 styles/*
 !styles/json-custom/
