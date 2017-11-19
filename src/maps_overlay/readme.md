@@ -1,9 +1,12 @@
-# Maps overlay folder
+## Maps overlay folder
+```src/maps_overlay/```
+
 This folder stores the maps overlays, areas and points.
 
 Each feature will be rendered using the following properties:
-name -> will be displayed as a label
-poi -> classifies the type of area-point, it does nothing for now.
+
+- name -> will be displayed as a label
+- poi -> classifies the type of area-point, it does nothing for now.
 
 
 Here an example:
