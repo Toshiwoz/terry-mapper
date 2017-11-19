@@ -1,5 +1,5 @@
 # terry-mapper
-A tool to display, edit, and print maps and overlays
+An application made with electron to display, edit, and print offline maps with overlays.
 
 ## Features
 
@@ -16,6 +16,12 @@ A tool to display, edit, and print maps and overlays
 - interface to draw polygons nad pois and save them (WIP)
 - interface to modify and locally save styles
 - printing maps
+
+## Installation
+Download the files in a local folter, then run npm install.
+i.e.:
+```cd terry-mapper```
+```npm install```
 
 
 ## Maps folder
