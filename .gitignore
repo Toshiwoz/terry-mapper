@@ -2,5 +2,7 @@ node_modules
 out
 src/maps/*
 src/maps_overlay/*
+!src/maps/*.md
+!src/maps_overlay/*.md
 src/styles/*
 !src/styles/json-custom/
