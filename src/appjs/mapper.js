@@ -1,4 +1,3 @@
-let app = require('electron');
 let canvasBuffer = require('electron-canvas-to-buffer');
 let $ = require('jquery');
 let fs = require('fs');

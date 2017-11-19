@@ -2041,6 +2041,10 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
+bootstrap@4.0.0-beta.2:
+  version "4.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0-beta.2.tgz#4d67d2aa2219f062cd90bc1247e6747b9e8fd051"
+
 bops@0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/bops/-/bops-0.0.6.tgz#082d1d55fa01e60dbdc2ebc2dba37f659554cf3a"
@@ -5879,6 +5883,10 @@ polygonize@1.0.1:
     "@turf/invariant" "^4.3.0"
     "@turf/meta" "^4.3.0"
 
+popper.js@1.12.3:
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.12.3.tgz#e46a99c52e74e310411df505d820b61bdbe7eaee"
+
 postcss-calc@^5.2.0:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/postcss-calc/-/postcss-calc-5.3.1.tgz#77bae7ca928ad85716e2fda42f261bf7c1d65b5e"
@@ -7183,6 +7191,10 @@ temp@^0.8.3:
   dependencies:
     os-tmpdir "^1.0.0"
     rimraf "~2.2.6"
+
+tether@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.1.tgz#78112ef21adf2aea68cd90e72185f43d9ffc44e8"
 
 text-table@~0.2.0:
   version "0.2.0"
