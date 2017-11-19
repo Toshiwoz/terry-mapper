@@ -19,14 +19,19 @@ A tool to display, edit, and print maps and overlays
 
 
 ## Maps folder
+```src/maps/```
+
 It is used to store maps in OSM format, if placed here the files will be automatically converted into __geojson__ format, then rendered into the application.
 
 ## Maps overlay folder
+```src/maps_overlay/```
+
 This folder stores the maps overlays, areas and points.
 
 Each feature will be rendered using the following properties:
-name -> will be displayed as a label
-poi -> classifies the type of area-point, it does nothing for now.
+
+- name -> will be displayed as a label
+- poi -> classifies the type of area-point, it does nothing for now.
 
 
 Here an example:
