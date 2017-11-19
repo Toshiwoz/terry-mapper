@@ -1,6 +1,6 @@
 node_modules
 out
-src/maps/
-src/maps_overlay/
+src/maps/*
+src/maps_overlay/*
 src/styles/*
 !src/styles/json-custom/
