@@ -20,7 +20,9 @@ An application made with electron to display, edit, and print offline maps with 
 ## Installation
 Download the files in a local folter, then run npm install.
 i.e.:
+
 ```cd terry-mapper```
+
 ```npm install```
 
 
