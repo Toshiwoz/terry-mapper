@@ -6,6 +6,7 @@ let osmtjsn = require('osmtogeojson');
 let turf = require('@turf/turf');
 let mapboxgl = require('mapbox-gl');
 let MapboxDraw = require('@mapbox/mapbox-gl-draw');
+require('./appjs/print.js');
 
 var stl_json = require('./styles/json-custom/json-style.json');
 var map_overlay = require('./maps_overlay/santa_teresa_c.json');
@@ -180,7 +181,8 @@ map.on('load', function () {
     // exportToImage();
 
     for (var k in map_overlay.features) {
-        if (map_overlay.features[k].geometry.type === 'Polygon' || map_overlay.features[k].geometry.type === 'Point') {
+        if (map_overlay.features[k].geometry.type === 'Polygon'
+            || map_overlay.features[k].geometry.type === 'Point') {
             var geom = map_overlay.features[k].geometry;
             console.log(geom);
             var id = draw.add(geom);

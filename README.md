@@ -7,15 +7,15 @@ An application made with electron to display, edit, and print offline maps with 
 - converts OSM files to geojson (using [osmtogeojson](https://github.com/tyrasd/osmtogeojson))
 - uses geojson files as only source of a custom mapbox style
 - it is now automatically converting .osm files that are pasted into ```src/maps/``` folder.
-- ```maps_overlay``` is instead used to store pois and areas for the territories
+- ```src/maps_overlay``` is instead used to store pois and areas for the territories.
 
 
 ## TODOs
 
 - have several files imported and displyed (WIP)
-- interface to draw polygons nad pois and save them (WIP)
+- interface to draw polygons and pois and save them (WIP)
 - interface to modify and locally save styles
-- printing maps
+- printing maps (WIP)
 
 ## Installation
 Download the files in a local folter, then run npm install.
