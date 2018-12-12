@@ -25,12 +25,16 @@ npm install
 ```
 
 ## Maps folder
-```src/maps/```
+```
+src/maps/
+```
 
 It is used to store maps in OSM format, if placed here the files will be automatically converted into __geojson__ format, then rendered into the application.
 
 ## Maps overlay folder
-```src/maps_overlay/```
+```
+src/maps_overlay/
+```
 
 This folder stores the maps overlays, areas and points.
 
