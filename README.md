@@ -18,13 +18,11 @@ An application made with electron to display, edit, and print offline maps with 
 - printing maps (WIP)
 
 ## Installation
-Download the files in a local folter, then run npm install.
-i.e.:
-
-```cd terry-mapper```
-
-```npm install```
-
+Download the files in a local folter, then run npm install. i.e.:
+```
+cd terry-mapper
+npm install
+```
 
 ## Maps folder
 ```src/maps/```
